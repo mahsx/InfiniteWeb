@@ -1,0 +1,39 @@
+﻿@model Assessment1.Models.Customer
+
+@{
+    ViewBag.Title = "Customer Details with Order ID 10248";
+}
+
+<h2>Customer Details with Order ID 10248</h2>
+<p><strong>Customer ID:</strong> @Model.CustomerID</p>
+<p><strong>Company Name:</strong> @Model.CompanyName</p>
+<p><strong>Contact Name:</strong> @Model.ContactName</p>
+<p><strong>Country:</strong> @Model.Country</p>
+
+@if (Model.Orders != null && Model.Orders.Any())
+{
+    <h3>Orders:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Ship Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.OrderDate</td>
+                    <td>@order.ShipName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No orders found for this customer.</p>
+}
